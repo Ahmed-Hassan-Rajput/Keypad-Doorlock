@@ -40,7 +40,7 @@ System States:
   This structure improves reliability, readability, and future scalability.
 
 
-  Hardware Used:
+Hardware Used:
 
 - Arduino Mega (ELEGOO)
 
@@ -57,7 +57,7 @@ System States:
 - External Motor Power Supply
 
 
-  Software & Libraries:
+Software & Libraries:
 
 - Arduino IDE
 
@@ -72,7 +72,7 @@ System States:
 - EEPROM
 
 
-  EEPROM Passcode Storage
+EEPROM Passcode Storage
 
   The passcode is stored in EEPROM so it remains after power loss.
 
@@ -85,7 +85,7 @@ System States:
   EEPROM.update() is used to reduce memory wear.
 
 
-  How to Use:
+How to Use:
   Unlocking:
 
 - Enter the 4-digit passcode
@@ -114,14 +114,14 @@ System States:
 
 - Passcode resets to 1234 and is saved to EEPROM
 
-  Schematic & Build:
+Schematic & Build:
 
   A wiring schematic is included in this repository. Due to simulator limitations, it represents the logical wiring for the keypad and LCD only.
 
   Photos and a demo video show the physical build and operation.
 
 
-  What I Learned
+What I Learned:
 
 - Finite-state machine design in embedded systems
 
