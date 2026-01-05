@@ -27,7 +27,7 @@
 - Error handling for invalid input
   
 
-  System States:
+System States:
 
 - The firmware operates using three states:
 
