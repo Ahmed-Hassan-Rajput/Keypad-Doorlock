@@ -86,6 +86,7 @@ EEPROM Passcode Storage
 
 
 How to Use:
+
   Unlocking:
 
 - Enter the 4-digit passcode
