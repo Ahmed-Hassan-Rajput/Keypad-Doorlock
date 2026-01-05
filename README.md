@@ -95,11 +95,11 @@ How to Use:
 
 - Motor actuates to unlock
 
-  Locking:
+Locking:
 
 - Press A while unlocked
 
-  Changing the Passcode:
+Changing the Passcode:
 
 - Unlock the door
 
@@ -109,7 +109,7 @@ How to Use:
 
 - Press D to save
 
-  Reset to Default:
+Reset to Default:
 
 - Press B while unlocked
 
