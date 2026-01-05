@@ -1,148 +1,136 @@
-Demonstration video: https://drive.google.com/file/d/1nlmRzYamGFdrQn9zjMDGmw6A-YF_utnO/view?usp=sharing
+  Arduino Keypad Door Lock
+  Overview:
 
-Overview 
+  This project is a fully functional Arduino-based electronic door lock combining embedded software, electronics, and mechanical actuation.
 
-This project is a fully functional Arduino-based electronic door lock that combines embedded software, electronics, and mechanical actuation. 
+  The system uses a 4×4 keypad for authentication, a 16×2 LCD for user feedback, and a stepper motor with a gear-rack mechanism to physically lock and unlock the door. 
+  A finite-state machine controls system behavior, and the passcode is stored in EEPROM to persist across power loss.
 
-The system uses a keypad for authentication, an LCD for user feedback, and a stepper motor with a gear-rack mechanism to physically lock and unlock a door.
+  Features:
 
-The lock is controlled using a finite-state machine to ensure reliable behavior across locked, unlocked, and passcode-change states. The passcode is stored in EEPROM, allowing it to persist even after power loss.
+- 4×4 keypad passcode entry
 
-This project was built as a hands-on exercise in embedded systems design and hardware–software integration.
+- 16×2 LCD real-time feedback
 
-Features
+- Stepper motor–driven locking mechanism
 
-4×4 keypad input for passcode entry
+- Gear-rack actuation for increased torque
 
-16×2 LCD for real-time system feedback
+- Secure passcode verification
 
-Stepper motor–driven mechanical locking mechanism
+- Passcode change and reset functionality
 
-Gear-rack actuation for increased torque and reliability
+- EEPROM-based passcode persistence
 
-Secure passcode verification
+- Finite-state machine architecture
 
-Passcode change functionality
+- Error handling for invalid input
+  
 
-EEPROM-based passcode storage (non-volatile memory)
+  System States:
 
-Finite-state machine architecture
+- The firmware operates using three states:
 
-Reset-to-default passcode option
+- LOCKED – Awaits correct 4-digit passcode
 
-Error handling for incorrect input and invalid states
+- UNLOCKED – Allows locking, passcode change, or reset
 
-System States
+- CHANGE_PASSWORD – Securely updates the passcode
 
-The firmware is organized using a finite-state machine with the following states:
+  This structure improves reliability, readability, and future scalability.
 
-LOCKED
-Awaits correct 4-digit passcode input to unlock
 
-UNLOCKED
-Allows the door to be locked, passcode to be changed, or system reset
+  Hardware Used:
 
-CHANGE_PASSWORD
-Allows the user to securely enter and save a new passcode
+- Arduino Mega (ELEGOO)
 
-This structure improves code clarity, reliability, and ease of future expansion.
+- 4×4 Matrix Keypad
 
-Hardware Used
+- 16×2 LCD Display
 
-Arduino Mega (ELEGOO)
+- Stepper Motor with Driver
 
-4×4 Matrix Keypad
+- Gear and Rack Mechanism
 
-16×2 LCD Display
+- Breadboard and Jumper Wires
 
-Stepper Motor with Driver
+- External Motor Power Supply
 
-Gear and Rack Mechanism
 
-Breadboard and Jumper Wires
+  Software & Libraries:
 
-External Power Supply (for motor)
+- Arduino IDE
 
-Software & Libraries
+- C/C++ (Arduino)
 
-Arduino IDE
+- Keypad
 
-C/C++ (Arduino)
+- LiquidCrystal
 
-Keypad library
+- Stepper
 
-LiquidCrystal library
+- EEPROM
 
-Stepper library
 
-EEPROM library
+  EEPROM Passcode Storage
 
-EEPROM Passcode Storage
+  The passcode is stored in EEPROM so it remains after power loss.
 
-The system stores the passcode in Arduino EEPROM so it is retained after power loss.
+  On startup:
 
-A magic byte is written to EEPROM to indicate valid initialization. On startup:
+- If EEPROM is uninitialized or invalid, the system resets to the default passcode (1234)
 
-If EEPROM is uninitialized or corrupted, the system safely resets to the default passcode (1234)
+- If valid data exists, the stored passcode is loaded
 
-If valid data exists, the saved passcode is restored
+  EEPROM.update() is used to reduce memory wear.
 
-EEPROM writes use EEPROM.update() to minimize memory wear.
 
-How to Use
-Unlocking the Door
+  How to Use:
+  Unlocking:
 
-Enter the 4-digit passcode
+- Enter the 4-digit passcode
 
-Press #
+- Press #
 
-The motor actuates to unlock the door
+- Motor actuates to unlock
 
-Locking the Door
+  Locking:
 
-Press A while unlocked
+- Press A while unlocked
 
-Changing the Passcode
+  Changing the Passcode:
 
-Unlock the door
+- Unlock the door
 
-Press C four times (CCCC)
+- Press C four times (CCCC)
 
-Enter a new 4-digit passcode
+- Enter a new 4-digit passcode
 
-Press D to save
+- Press D to save
 
-Resetting to Default Passcode
+  Reset to Default:
 
-Press B while unlocked
+- Press B while unlocked
 
-The passcode resets to 1234 and is saved to EEPROM
+- Passcode resets to 1234 and is saved to EEPROM
 
-Schematic & Build
+  Schematic & Build:
 
-A wiring schematic is included in this repository.
-Due to simulator limitations, the schematic only represents the logical wiring used for the keypad and LCD and not the stepper motor.
+  A wiring schematic is included in this repository. Due to simulator limitations, it represents the logical wiring for the keypad and LCD only.
 
-Photos and a demonstration video of the working prototype are included to show the physical build and operation.
+  Photos and a demo video show the physical build and operation.
 
-What I Learned
 
-Designing embedded systems using finite-state machines
+  What I Learned
 
-Persisting data using EEPROM
+- Finite-state machine design in embedded systems
 
-Integrating mechanical, electrical, and software components
+- EEPROM data persistence
 
-Managing user input and error handling
+- Hardware–software integration
 
-Debugging real hardware systems
+- User input validation and error handling
 
-Designing for reliability rather than just functionality
+- Debugging real embedded hardware
 
-Future Improvements
-
-Add Bluetooth (HC-05) for remote access control
-
-Implement lockout after repeated failed attempts
-
-Improve power management and enclosure design
+- Designing for reliability
